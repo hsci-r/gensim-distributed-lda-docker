@@ -5,7 +5,10 @@ RUN pip install --no-cache-dir gensim Pyro4
 ENV PYRO_SERIALIZERS_ACCEPTED=pickle
 ENV PYRO_SERIALIZER=pickle
 
-COPY dispatcher.py /dispatcher.py
+EXPORT 9090
 
-CMD python -m Pyro4.naming -n 0.0.0.0 & python /dispatcher.py
+EXPORT 9091
 
+EXPORT 9100
+
+CMD python -m Pyro4.naming -n 0.0.0.0 & python -m gensim.models.lda_dispatcher -p 9100 -v 
