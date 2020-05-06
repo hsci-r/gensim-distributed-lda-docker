@@ -11,4 +11,4 @@ EXPOSE 9091
 
 EXPOSE 9100
 
-CMD python -m Pyro4.naming -n 0.0.0.0 & python -m gensim.models.lda_dispatcher -p 9100 -v 
+CMD python -m Pyro4.naming -n 0.0.0.0 & python -m gensim.models.lda_dispatcher --port 9100 -v 

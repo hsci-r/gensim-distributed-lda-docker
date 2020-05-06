@@ -7,4 +7,4 @@ ENV PYRO_SERIALIZER=pickle
 
 EXPOSE 9100
 
-CMD python -m gensim.models.lda_worker -p 9100 -v
+CMD python -m gensim.models.lda_worker --port 9100 -v
