@@ -5,6 +5,10 @@ RUN pip install --no-cache-dir gensim Pyro4
 ENV PYRO_SERIALIZERS_ACCEPTED=pickle
 ENV PYRO_SERIALIZER=pickle
 
-ENV NS_HOST=localhost
+ENV NS_HOST=
 
-CMD python -m gensim.models.lda_worker -v --host $NS_HOST
+COPY worker.py /worker.py
+
+EXPOSE 9100
+
+CMD python /worker.py --ns-host $NS_HOST

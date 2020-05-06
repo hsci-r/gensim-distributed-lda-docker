@@ -5,6 +5,10 @@ RUN pip install --no-cache-dir gensim Pyro4
 ENV PYRO_SERIALIZERS_ACCEPTED=pickle
 ENV PYRO_SERIALIZER=pickle
 
-EXPOSE 9090
+ENV NS_HOST=
 
-CMD python -m Pyro4.naming -n 0.0.0.0 & python -m gensim.models.lda_dispatcher -v 
+COPY dispatcher.py /dispatcher.py
+
+EXPOSE 9100
+
+CMD python /dispatcher.py --ns-host $NS_HOST
